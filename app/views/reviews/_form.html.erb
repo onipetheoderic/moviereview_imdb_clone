@@ -1,0 +1,34 @@
+<%= form_for([@movie, @review]) do |form| %>
+  <% if review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :rating %> <%# We added the min and the max to the form field to make sure it is not more than 5 stars and less than I star%>
+    <%= form.number_field :rating, class: 'form_counter', min:1, max:5%>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment, id: :review_comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<%#<%= form_with(model: review, model: movie, local: true) do |form| %> 
+<script>
+//to make the number field numeric only
+  $(".form_counter").keypress(function(event) {
+  return /\d/.test(String.fromCharCode(event.keyCode));
+});
+</script>

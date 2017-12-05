@@ -1,0 +1,86 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+      <%= image_tag @movie.image.url(:medium) %>
+     
+
+        <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><strong>Title:</strong></td>
+              <td><%= @movie.title %></td>
+              
+            </tr>
+            <tr>
+              <td><strong>Description:</strong></td>
+              <td><%= @movie.movie_length %></td>
+              
+            </tr>
+            <tr>
+              <td><strong>Movie length:</strong></td>
+               <td><%= @movie.movie_length %></td>
+            </tr>
+            <tr>
+              <td><strong>Director:</strong></td>
+              <td><%= @movie.director %></td>
+            </tr>
+            <tr>
+              <td><strong>Rating:</strong></td>
+              <td><%= @movie.rating %></tr>
+            </tr>
+          </tbody>
+        </table>
+         <h3><div class="star-rating"> <%= @avg_review %> /5.0</div></h3>
+         <h4><%= "#{@reviews.length} reviews" %></h4>
+       <h4> <%= link_to "Write a Review", new_movie_review_path(@movie) %></h4>
+          
+        </div>
+      </div>
+      <div class="col-md-7 col-md-offset-1">
+<h1 style="text-align:left;float:left;"><%= @avg_review %> /5.0</h1> 
+<h2 style="text-align:right;float:right;"><%= @avg_percent %>% rating</h2> 
+<hr style="clear:both;"/>
+
+             <h1 class="review_title"><%= @movie.title %></h1>
+        <p> <%= @movie.description %></p>
+        <% if @reviews.blank? %>
+          <h3> No Reviews Yet, Would You like to Add the First review</h3>
+          <%= link_to "Add a Review", new_movie_review_path(@movie), class: "btn btn-danger" %>
+        
+        <% else %>
+        <h2>Reviews</h2>
+          <% @reviews.each do |review| %>
+            <div class="reviews">
+
+              <p class=<%= review.rating %>> <%= review.rating %></p>
+              
+
+             <p> <%= review.comment %> </p>
+            </div>
+            <% end %>
+
+        <% end %>
+        <div class="div_5"> </div>
+      </div>
+    </div>
+    
+  </div>  
+</div>
+
+<%# if you want the image to show you have to include an image_tag to it%>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
+
+
+<script>
+  $(document).ready(function(){
+    $('.5').text( "  ★★★★★")
+    $('.4').text( "  ★★★★")
+    $('.3').text( "  ★★★")
+    $('.2').text( "  ★★")
+    $('.1').text( "  ★")
+})
+</script>

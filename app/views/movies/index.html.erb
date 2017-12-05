@@ -1,0 +1,19 @@
+<% if !user_signed_in? %>
+  <div class="jumbotron">
+    <h2> Your Favourite movies reviewed </h2>
+    <p><%= link_to "Sign Up to Write a Review", new_user_registration_path, class:"btn btn-primary btn-lg" %> </p>
+  </div>
+<% end %>
+<div class="row"> 
+  <% @movies.each do |movie| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%=link_to (image_tag movie.image.url(:medium), class: 'image'), movie %>
+
+      </div>
+    </div>
+  <% end %>
+  <% if @movies.blank? %>
+  <h4>There are no movies containing the term <%= params[:search] %>.</h4>
+<% end %>
+</div>
