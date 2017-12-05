@@ -5,19 +5,19 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version -- 2.33
 
-* System dependencies
+* Rails 5.1...
 
-* Configuration
+* JQuery
 
-* Database creation
+* Bootstrap
 
-* Database initialization
+* Devise Gem
 
-* How to run the test suite
+* Paperclip Gem
 
-* Services (job queues, cache servers, search engines, etc.)
+* Services (User-Registration, Ability to review Moviess, Ability to create a Movie, search engines, Star rating of movies, Average Rating of a specific movie and converting it into percentage to know how it is etc.)
 
 * Deployment instructions
 
